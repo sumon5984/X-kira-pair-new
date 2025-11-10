@@ -16,14 +16,24 @@ export default function PairPage() {
       return;
     }
 
+    const apiUrl = process.env.NEXT_PUBLIC_API;
+    if (!apiUrl) {
+      setError('API URL is not configured. Please contact the administrator.');
+      return;
+    }
+
     setLoading(true);
     setError('');
     setPairCode('');
     setSuccess(false);
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API || 'http://ballast.proxy.rlwy.net:11473';
       const response = await fetch(`${apiUrl}/pair?code=${phoneNumber}`);
+      
+      if (!response.ok) {
+        throw new Error(`Server responded with status ${response.status}`);
+      }
+      
       const data = await response.json();
 
       if (data.status === 'success') {
@@ -39,7 +49,9 @@ export default function PairPage() {
         }
       }
     } catch (err) {
-      setError('Failed to connect to the server. Please try again.');
+      console.error('Pairing error:', err);
+      const errorMessage = err instanceof Error ? err.message : 'Failed to connect to the server. Please try again.';
+      setError(`Connection failed: ${errorMessage}. Please check your API configuration.`);
     } finally {
       setLoading(false);
     }
