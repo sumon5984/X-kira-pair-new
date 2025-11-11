@@ -14,14 +14,19 @@ export default function Home() {
       <CustomCursor />
       <div className="min-h-screen bg-background">
         {/* Header */}
-        <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-          <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        <header className="border-b border-white/10 sticky top-0 z-50" style={{ background: 'rgba(0, 0, 0, 0.5)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
+          <div className="container mx-auto px-6 py-5 flex items-center justify-between">
             <div className="flex items-center">
-              <div className="border border-neutral-600 rounded-full flex items-center justify-center"></div>
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">X</span>
+                </div>
+                <span className="font-semibold text-lg syne">x-kira</span>
+              </div>
             </div>
             <nav className="hidden md:flex space-x-8">
-              <a href="#features" className="nav-link text-sm font-medium">Features</a>
-              <a href="#getting-started" className="nav-link text-sm font-medium">Get Started</a>
+              <a href="#features" className="nav-link text-sm font-medium space-grotesk hover:text-indigo-400 transition-colors">Features</a>
+              <a href="#getting-started" className="nav-link text-sm font-medium space-grotesk hover:text-indigo-400 transition-colors">Get Started</a>
             </nav>
           </div>
         </header>
@@ -44,15 +49,15 @@ export default function Home() {
                 </span>
               </div>
 
-              <h1 className="text-[5em] sm:text-[7em] md:text-[9em] lg:text-[10em] mb-8 mt-4 thunder leading-none">
-                <span className="text-gradient inline-block">x-kira</span><span className="text-indigo-500">.</span>
+              <h1 className="text-[5em] sm:text-[7em] md:text-[9em] lg:text-[11em] mb-8 mt-4 thunder leading-none">
+                <span className="text-gradient inline-block" style={{ textShadow: '0 0 80px rgba(99, 102, 241, 0.3)' }}>x-kira</span><span className="text-indigo-400 inline-block animate-pulse">.</span>
               </h1>
               
-              <p className="text-lg md:text-2xl lg:text-3xl mb-4 text-foreground/90 max-w-3xl mx-auto font-light leading-relaxed">
+              <p className="text-lg md:text-2xl lg:text-3xl mb-4 text-foreground/95 max-w-3xl mx-auto font-light leading-relaxed space-grotesk">
                 Free WhatsApp Bot with advanced features
               </p>
               
-              <p className="text-sm md:text-base mb-12 text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              <p className="text-sm md:text-lg mb-12 text-muted-foreground/80 max-w-2xl mx-auto leading-relaxed">
                 Enterprise-grade automation, multi-device support, and powerful plugin system. 
                 Get started in seconds with our streamlined pairing process.
               </p>
@@ -97,13 +102,13 @@ export default function Home() {
           
           <div className="container mx-auto px-6 relative z-10">
             <div className="text-center mb-20 animate-slide-up">
-              <div className="inline-block px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-6">
-                <span className="text-sm font-medium text-indigo-400 tracking-wide uppercase">Features</span>
+              <div className="inline-block px-5 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 mb-6 backdrop-blur-sm">
+                <span className="text-sm font-semibold text-indigo-300 tracking-wide uppercase space-grotesk">Features</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+              <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight syne">
                 Built for <span className="text-gradient">performance</span>
               </h2>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground/80 max-w-2xl mx-auto leading-relaxed">
                 Enterprise-grade features with developer-first experience
               </p>
             </div>
@@ -185,13 +190,13 @@ export default function Home() {
           
           <div className="container mx-auto px-6 relative z-10">
             <div className="text-center mb-20">
-              <div className="inline-block px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-6">
-                <span className="text-sm font-medium text-indigo-400 tracking-wide uppercase">Quick Start</span>
+              <div className="inline-block px-5 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 mb-6 backdrop-blur-sm">
+                <span className="text-sm font-semibold text-indigo-300 tracking-wide uppercase space-grotesk">Quick Start</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+              <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight syne">
                 Get started in <span className="text-gradient">seconds</span>
               </h2>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground/80 leading-relaxed">
                 Three simple steps to deploy your bot
               </p>
             </div>
@@ -199,11 +204,11 @@ export default function Home() {
             <div className="grid lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
               <div className="relative">
                 <div className="flex items-start space-x-5">
-                  <div className="w-12 h-12 bg-gradient-to-br from-white to-indigo-200 text-black rounded-2xl flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-lg shadow-white/20">
+                  <div className="w-12 h-12 bg-gradient-to-br from-white to-indigo-300 text-black rounded-2xl flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-lg shadow-indigo-500/30">
                     1
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-3">Generate pair code</h3>
+                    <h3 className="text-xl font-semibold mb-3 syne">Generate pair code</h3>
                     <p className="text-muted-foreground leading-relaxed">
                       Click x-kira pair button and enter your WhatsApp number with country code
                     </p>
@@ -215,11 +220,11 @@ export default function Home() {
 
               <div className="relative">
                 <div className="flex items-start space-x-5">
-                  <div className="w-12 h-12 bg-gradient-to-br from-white to-indigo-200 text-black rounded-2xl flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-lg shadow-white/20">
+                  <div className="w-12 h-12 bg-gradient-to-br from-white to-indigo-300 text-black rounded-2xl flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-lg shadow-indigo-500/30">
                     2
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-3">Link your device</h3>
+                    <h3 className="text-xl font-semibold mb-3 syne">Link your device</h3>
                     <p className="text-muted-foreground leading-relaxed">
                       Open WhatsApp, tap the 3 dots menu, select "Link a device", and paste your code
                     </p>
@@ -231,11 +236,11 @@ export default function Home() {
 
               <div className="relative">
                 <div className="flex items-start space-x-5">
-                  <div className="w-12 h-12 bg-gradient-to-br from-white to-indigo-200 text-black rounded-2xl flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-lg shadow-white/20">
+                  <div className="w-12 h-12 bg-gradient-to-br from-white to-indigo-300 text-black rounded-2xl flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-lg shadow-indigo-500/30">
                     3
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-3">Start using</h3>
+                    <h3 className="text-xl font-semibold mb-3 syne">Start using</h3>
                     <p className="text-muted-foreground leading-relaxed">
                       Successfully paired! Type <code className="px-2 py-1 bg-muted/50 rounded text-sm font-mono">.menu</code> to explore all features
                     </p>
