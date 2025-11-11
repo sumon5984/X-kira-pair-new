@@ -4,6 +4,8 @@ import Link from 'next/link';
 import LoadingScreen from './components/LoadingScreen';
 import AnimatedBackground from './components/AnimatedBackground';
 import CustomCursor from './components/CustomCursor';
+import RealTimeStats from './components/RealTimeStats'; // Added import
+
 export default function Home() {
   return (
     <>
@@ -33,14 +35,14 @@ export default function Home() {
                 <span className="text-gradient">x-kira</span><span className="text-indigo-500">.</span>
               </h1>
               <p className="text-xl md:text-2xl mb-14 text-muted-foreground max-w-2xl mx-auto font-light">
-                Free WhatsApp Bot with advanced features 
+                Free WhatsApp Bot with advanced features
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link href="/pair-pro" className="glow-button px-8 py-3 rounded-lg font-semibold text-lg tracking-tight">
                   pair x-kira pro
                 </Link>
                 <Link href="/pair" className="secondary-button font-semibold px-8 py-3 rounded-lg tracking-tight text-lg">
-                  pair x-kira 
+                  pair x-kira
                 </Link>
               </div>
             </div>
@@ -161,7 +163,9 @@ export default function Home() {
         {/* Stats Section */}
         <section className="py-24 border-t border-border">
           <div className="container mx-auto px-6">
-            <div className="grid md:grid-cols-3 gap-8 text-center">
+            {/* Render the RealTimeStats component here */}
+            <RealTimeStats />
+            <div className="grid md:grid-cols-3 gap-8 text-center mt-8"> {/* Added mt-8 for spacing */}
               <div>
                 <div className="text-3xl font-bold mb-2">142+</div>
                 <div className="text-muted-foreground">Active Deployments</div>
