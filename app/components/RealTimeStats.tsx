@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -24,52 +23,11 @@ export default function RealTimeStats() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_API || "";
-        const apiProUrl = process.env.NEXT_PUBLIC_API_PRO || "";
-        
-        let total = 0;
-
-        // Fetch from regular API
-        if (apiUrl) {
-          try {
-            const response = await fetch(`${apiUrl}/sessions`, {
-              method: 'GET',
-              headers: {
-                'Accept': 'application/json',
-              },
-              mode: 'cors',
-              cache: 'no-cache'
-            });
-            if (response.ok) {
-              const data: SessionsResponse = await response.json();
-              total += data.total || 0;
-            }
-          } catch (error) {
-            console.warn('API endpoint not reachable:', apiUrl);
-          }
+        const response = await fetch('/api/sessions');
+        if (response.ok) {
+          const data: SessionsResponse = await response.json();
+          setTotalSessions(data.total || 0);
         }
-
-        // Fetch from PRO API
-        if (apiProUrl) {
-          try {
-            const response = await fetch(`${apiProUrl}/sessions`, {
-              method: 'GET',
-              headers: {
-                'Accept': 'application/json',
-              },
-              mode: 'cors',
-              cache: 'no-cache'
-            });
-            if (response.ok) {
-              const data: SessionsResponse = await response.json();
-              total += data.total || 0;
-            }
-          } catch (error) {
-            console.warn('API PRO endpoint not reachable:', apiProUrl);
-          }
-        }
-
-        setTotalSessions(total);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching stats:', error);
