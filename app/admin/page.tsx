@@ -38,7 +38,7 @@ export default function AdminPage() {
         setUsers(data.users || {});
         setMessage('');
       } else {
-        setMessage('Invalid admin key');
+        setMessage(data.message || 'Key not matching');
         setMessageType('error');
         setIsAuthenticated(false);
       }

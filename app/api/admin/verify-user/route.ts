@@ -5,10 +5,11 @@ import { app } from '@/lib/firebase';
 export async function POST(request: Request) {
   try {
     const adminKey = request.headers.get('x-admin-key');
+    const PERMANENT_ADMIN_KEY = '9836';
     
-    if (!adminKey || adminKey !== process.env.ADMIN_KEY) {
+    if (!adminKey || adminKey !== PERMANENT_ADMIN_KEY) {
       return NextResponse.json(
-        { status: 'error', message: 'Unauthorized' },
+        { status: 'error', message: 'Key not matching' },
         { status: 401 }
       );
     }
@@ -46,10 +47,11 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
   const adminKey = request.headers.get('x-admin-key');
+  const PERMANENT_ADMIN_KEY = '9836';
   
-  if (!adminKey || adminKey !== process.env.ADMIN_KEY) {
+  if (!adminKey || adminKey !== PERMANENT_ADMIN_KEY) {
     return NextResponse.json(
-      { status: 'error', message: 'Unauthorized' },
+      { status: 'error', message: 'Key not matching' },
       { status: 401 }
     );
   }
