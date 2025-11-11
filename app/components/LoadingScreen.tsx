@@ -152,7 +152,7 @@ export default function LoadingScreen() {
                   transition={{ duration: 2, repeat: Infinity }}
                   className="bg-gradient-to-r from-white via-blue-200 to-blue-400 bg-clip-text text-transparent inline-block"
                 >
-                  x-kira
+                  x - k i r a
                 </motion.span>
                 <motion.span
                   initial={{ scale: 0, rotate: -180, filter: 'blur(5px)' }}
