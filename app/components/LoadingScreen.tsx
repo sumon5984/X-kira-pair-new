@@ -8,8 +8,11 @@ export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [isFirstVisit, setIsFirstVisit] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+    
     // Check if this is first visit or refresh
     const hasVisited = sessionStorage.getItem('hasVisited');
     setIsFirstVisit(!hasVisited);
@@ -97,17 +100,17 @@ export default function LoadingScreen() {
           />
 
           {/* Floating particles */}
-          {[...Array(20)].map((_, i) => (
+          {isMounted && [...Array(20)].map((_, i) => (
             <motion.div
               key={i}
               initial={{ 
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
+                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
                 opacity: 0
               }}
               animate={{ 
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
+                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
                 opacity: [0, 0.6, 0],
               }}
               transition={{ 
