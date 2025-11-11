@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 
 export default function PairProPage() {
@@ -9,7 +9,6 @@ export default function PairProPage() {
   const [pairCode, setPairCode] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
-  const [checkingVerification, setCheckingVerification] = useState(false);
 
   const handlePair = async () => {
     if (!phoneNumber) {
@@ -23,19 +22,6 @@ export default function PairProPage() {
     setSuccess(false);
 
     try {
-      setCheckingVerification(true);
-      const verifyResponse = await fetch(`/api/check-user?phoneNumber=${phoneNumber}`);
-      const verifyData = await verifyResponse.json();
-
-      // If verification check fails or user is not verified, redirect to WhatsApp
-      if (verifyData.status === 'error' || !verifyData.verified) {
-        window.location.href = 'https://wa.me/917003816486?text=pair%20me%20x-kira%20pro';
-        return;
-      }
-
-      setCheckingVerification(false);
-
-      // Only proceed with pairing if user is verified
       const response = await fetch(`/api/pair-pro?code=${phoneNumber}`);
       
       if (!response.ok) {
@@ -62,7 +48,6 @@ export default function PairProPage() {
       setError(`Connection failed: ${errorMessage}. Please check your API configuration.`);
     } finally {
       setLoading(false);
-      setCheckingVerification(false);
     }
   };
 
@@ -127,10 +112,10 @@ export default function PairProPage() {
 
                   <button
                     onClick={handlePair}
-                    disabled={loading || checkingVerification}
+                    disabled={loading}
                     className="glow-button w-full px-6 py-3 rounded-lg font-semibold text-lg"
                   >
-                    {checkingVerification ? 'Checking verification...' : loading ? 'Generating...' : 'Get PRO Pair Code'}
+                    {loading ? 'Generating...' : 'Get PRO Pair Code'}
                   </button>
                 </div>
               )}
