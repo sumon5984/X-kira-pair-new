@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@popmotion/popcorn": "^0.4.4",
+    "firebase": "^12.5.0",
+    "firebase-admin": "^13.6.0",
     "framer-motion": "^11.11.17",
     "lucide-react": "^0.468.0",
     "next": "16.0.0",
