@@ -6,8 +6,13 @@ import { useState, useEffect } from 'react';
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
 
   useEffect(() => {
+    // Check if this is first visit or refresh
+    const hasVisited = sessionStorage.getItem('hasVisited');
+    setIsFirstVisit(!hasVisited);
+    
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -20,6 +25,8 @@ export default function LoadingScreen() {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
+      // Mark as visited for this session
+      sessionStorage.setItem('hasVisited', 'true');
     }, 1500);
 
     return () => {
@@ -41,7 +48,9 @@ export default function LoadingScreen() {
               console.log("Loading screen exited");
             }
           }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-background overflow-hidden"
+          className={`fixed inset-0 flex items-center justify-center bg-background overflow-hidden ${
+            isFirstVisit ? 'z-[100]' : 'z-[200]'
+          }`}
         >
           {/* Animated background gradient */}
           <motion.div
